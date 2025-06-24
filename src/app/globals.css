@@ -17,8 +17,22 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+progress::-webkit-progress-value {
+  background-color: #1a2e05;
+}
+progress::-moz-progress-bar {
+    background-color: #1a2e05;
+}
+progress::-ms-fill {
+    background-color: #1a2e05;
 }
