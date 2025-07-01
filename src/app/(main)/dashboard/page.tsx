@@ -19,10 +19,10 @@ export default function Dashboard() {
 
 
             <section className="py-20">
-                <Container className="p-5">
+                <Container className="sm:p-5">
 
 
-                    <div className="rounded-2xl px-5 py-7 flex flex-col items-start border-1 ">
+                    <div className="sm:rounded-2xl sm:px-5 sm:py-7 flex flex-col items-start sm:border-1 ">
 
                         <div className="">
                             <h1 className="text-2xl">Total Carbon Footprint (June 2025) </h1>
@@ -36,7 +36,7 @@ export default function Dashboard() {
 
                         <div className="h-96 w-96 bg-amber-200 mx-auto my-5">Pie Chart</div>
 
-                        <div className="flex gap-3 w-full">
+                        <div className="flex max-md:flex-col gap-3 w-full">
                             {[
                                 {title: "Transport", value: 120, change: "↑ 8%"},
                                 {title: "Energy", value: 90, change: "↑ 5%"},
@@ -79,7 +79,7 @@ export default function Dashboard() {
                             ))}
                         </div>
 
-                        <div className="flex mt-16 gap-5 w-full">
+                        <div className="flex max-md:flex-col mt-16 gap-5 w-full">
                             <div className="flex-1 rounded-2xl px-5 py-7 flex flex-col items-start border-1 min-w-0">
                                 <div className="text-2xl font-bold">Goal Progress</div>
                                 <div className="mt-1 font-light">Reduce monthly footprint by 10% - On Track</div>

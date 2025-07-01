@@ -48,7 +48,7 @@ export default function Home() {
 
 
             <section id="howItWorks" className="py-20">
-                <Container className="p-5">
+                <Container className="sm:p-5">
                     <h1 className="text-5xl">
                         How It Works: A Simple 3-Step Process
                     </h1>
