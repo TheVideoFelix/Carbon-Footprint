@@ -55,7 +55,7 @@ export default function Home() {
 
                     <p className="text-xl mt-2 max-w-4xl">
                         Calculating your carbon footprint has never been easier. Just provide a few details about your
-                        lifestyle, and we'll handle the rest.
+                        lifestyle, and we will handle the rest.
                     </p>
 
                     <div className="flex flex-col gap-10 mt-10">
