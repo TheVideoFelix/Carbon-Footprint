@@ -1,6 +1,47 @@
 import {Container} from "@/components/ui";
+import {ChartData} from "chart.js";
+import FootprintOverTimeChart from "@/components/chart/footprintOverTimeChart";
+import TotalCarbonFootprintChart from "@/components/chart/totalCarbonFootprintChart";
 
 export default function Dashboard() {
+
+    const lineData: ChartData<'line'> = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [
+            {
+                label: 'Footprint Over Time',
+                data: [60, 80, 75, 90, 110, 100],
+                fill: false,
+                borderColor: 'rgba(132,204,22,0.7)',
+                backgroundColor: 'rgba(132,204,22,0.2)',
+                tension: 0.4,
+            },
+        ],
+    };
+
+    const pieData: ChartData<'doughnut'> = {
+        labels: ['Transport', 'Energy', 'Food', 'Waste'],
+        datasets: [
+            {
+                data: [120, 90, 70, 55],
+                backgroundColor: [
+                    'rgba(132,204,22,0.2)',
+                    'rgba(251,191,36,0.2)',
+                    'rgba(248,113,113,0.2)',
+                    'rgba(96,165,250,0.2)'
+                ],
+                borderColor: [
+                    'rgba(132,204,22,0.7)',
+                    'rgba(251,191,36,0.7)',
+                    'rgba(248,113,113,0.7)',
+                    'rgba(96,165,250,0.7)'
+                ]
+            }
+        ],
+    };
+
+
+
     return (
         <>
             <header className="flex flex-col justify-end h-[200px] bg-lime-950 text-amber-50 rounded-b-2xl">
@@ -34,7 +75,9 @@ export default function Dashboard() {
 
                         <div className="w-full h-px bg-gray-300 my-4"/>
 
-                        <div className="h-96 w-96 bg-amber-200 mx-auto my-5">Pie Chart</div>
+                        <div className="w-full h-64 md:h-96 mx-auto my-5">
+                            <TotalCarbonFootprintChart data={pieData} />
+                        </div>
 
                         <div className="flex max-md:flex-col gap-3 w-full">
                             {[
@@ -56,7 +99,9 @@ export default function Dashboard() {
 
                         <h1 className="text-2xl font-bold my-5">Footprint Over Time</h1>
 
-                        <div className="h-60 w-[500px] bg-lime-700 mx-auto my-5">Pie Chart</div>
+                        <div className="h-64 w-full mx-auto my-5 py-5 px-7">
+                            <FootprintOverTimeChart data={lineData} />
+                        </div>
 
                         <h1 className="text-2xl font-bold my-5">Recent Activities</h1>
 
