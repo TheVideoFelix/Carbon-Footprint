@@ -52,8 +52,8 @@ export default function Dashboard() {
             <div className="fixed inset-0 z-40 bg-gray-900/10 backdrop-blur-sm" />
 
             <div className="fixed inset-0 z-50 flex items-center justify-center">
-                <div className="bg-amber-50 p-8 rounded-lg shadow-sm w-1/3 h-[800px]">
-                    <Container maxWidth={600} className="w-full h-full">
+                <div className="bg-amber-50 p-8 rounded-lg shadow-sm w-1/3 h-[800px] flex flex-col">
+                    <div className="w-full flex flex-col flex-1">
                         <h1 className="text-2xl font-bold">Add Activity</h1>
                         <div className="mt-5 px-7">
                             <ul className="flex justify-between">
@@ -76,8 +76,8 @@ export default function Dashboard() {
                         </div>
                         <div className="w-full h-px bg-gray-300 my-4"/>
 
-                        <form action="" className="flex flex-col justify-between ">
-                            <div className="flex flex-col gap-10">
+                        <form action="" className="flex flex-col justify-between flex-1">
+                            <div className="flex flex-col gap-10 mt-10">
                                 <div>
                                     <label htmlFor="transport-type" className="block text-lime-900 font-semibold mb-2">Type</label>
                                     <select
@@ -118,7 +118,7 @@ export default function Dashboard() {
                                 </Button>
                             </div>
                         </form>
-                    </Container>
+                    </div>
                 </div>
             </div>
 
