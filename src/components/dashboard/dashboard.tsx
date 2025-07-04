@@ -40,7 +40,7 @@ const Dashboard = () => {
     };
 
     const pieData: ChartData<'doughnut'> = {
-        labels: ['Transport', 'Energy', 'Food', 'Waste'],
+        labels: ['Transport', 'Energy', 'Shopping', 'Waste'],
         datasets: [
             {
                 data: [120, 90, 70, 55],
@@ -100,7 +100,7 @@ const Dashboard = () => {
                         {[
                             {title: "Transport", value: 120, change: "↑ 8%"},
                             {title: "Energy", value: 90, change: "↑ 5%"},
-                            {title: "Food", value: 70, change: "↓ 2%"},
+                            {title: "Shopping", value: 70, change: "↓ 2%"},
                             {title: "Waste", value: 55, change: "↑ 1%"}
                         ].map((item, idx) => (
                             <div

@@ -1,12 +1,30 @@
 'use client';
-import React from 'react';
+import React, {useState} from 'react';
 import Button from "@/components/ui/button";
+import {EnergyForm, ShoppingForm, TransportForm, WasteForm} from "@/components/form/activity-forms";
+
+type TabConfig = {
+    label: string;
+    component: React.ComponentType;
+};
+
+const TABS: Record<string, TabConfig> = {
+    transport: { label: "Transport" , component: TransportForm },
+    energy:{ label: "Energy" , component: EnergyForm },
+    shopping:{ label: "Shopping" , component: ShoppingForm },
+    waste:{ label: "Waste" , component: WasteForm }
+};
+
+type TabKey = keyof typeof TABS;
 
 interface AddActivityFormProps {
     onClose: () => void,
 }
 
 const AddActivityForm = ({ onClose }: AddActivityFormProps) => {
+    const [activeForm, setActiveForm] = useState<TabKey>('transport');
+
+    const ActiveFormComponent: React.ComponentType = TABS[activeForm].component;
 
     const today = new Date().toISOString().split('T')[0];
 
@@ -25,49 +43,29 @@ const AddActivityForm = ({ onClose }: AddActivityFormProps) => {
                     <div className="w-full flex flex-col flex-1">
                         <h1 className="text-2xl font-bold">Add Activity</h1>
                         <div className="mt-5 px-7">
-                            <ul className="flex justify-between">
-                                {[
-                                    { label: "Transport", active: true },
-                                    { label: "Energy", active: false },
-                                    { label: "Food", active: false },
-                                    { label: "Waste", active: false }
-                                ].map((item, index) => (
-                                    <Button
-                                        variant="text"
-                                        key={index}
-                                        active={item.active}
-                                    >
-                                        {item.label}
-                                    </Button>
+                            <div className="flex justify-between">
+                                {(Object.keys(TABS) as TabKey[]).map((tapKey) => (
+                                    <div key={tapKey} className="flex-1 text-center">
+                                        <Button
+                                            className="transition-all duration-200"
+                                            variant="text"
+                                            active={tapKey === activeForm}
+                                            onClick={() => setActiveForm(tapKey)}
+                                        >
+                                            {TABS[tapKey].label}
+                                        </Button>
+                                    </div>
                                 ))
                                 }
-                            </ul>
+                            </div>
                         </div>
                         <div className="w-full h-px bg-gray-300 my-4"/>
 
                         <form action="" className="flex flex-col justify-between flex-1">
                             <div className="flex flex-col gap-10 mt-10">
-                                <div>
-                                    <label htmlFor="transport-type" className="block text-lime-900 font-semibold mb-2">Type</label>
-                                    <select
-                                        id="transport-type"
-                                        className="w-full p-3 rounded-lg border border-lime-900/50 bg-transparent focus:outline-none focus:ring-2 focus:ring-lime-900"
-                                    >
-                                        <option>Car (Gasoline)</option>
-                                        <option>Bus</option>
-                                        <option>Train</option>
-                                        <option>Bicycle</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label htmlFor="distance" className="block text-lime-900 font-semibold mb-2">Distance (km)</label>
-                                    <input
-                                        type="number"
-                                        id="distance"
-                                        placeholder="e.g., 25"
-                                        className="w-full p-3 rounded-lg border border-lime-900/50 bg-transparent focus:outline-none focus:ring-2 focus:ring-lime-900"
-                                    />
-                                </div>
+
+                                <ActiveFormComponent />
+
                                 <div>
                                     <label htmlFor="date" className="block text-lime-900 font-semibold mb-2">Date</label>
                                     <input
