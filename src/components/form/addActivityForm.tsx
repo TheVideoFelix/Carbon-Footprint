@@ -37,7 +37,7 @@ const AddActivityForm = ({ onClose }: AddActivityFormProps) => {
                 onClick={onClose}
             >
                 <div
-                    className="bg-amber-50 p-8 rounded-lg shadow-sm w-1/3 h-[800px] flex flex-col transition-all duration-300"
+                    className="bg-amber-50 p-8 rounded-lg shadow-sm w-full sm:w-[600px] xl:w-1/3 h-full sm:h-[800px] flex flex-col transition-all duration-300"
                     onClick={(e) => e.stopPropagation()}
                 >
                     <div className="w-full flex flex-col flex-1">
