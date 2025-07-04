@@ -1,1 +1,1 @@
-export { default as AddActivityForm } from './addActivityForm'
+export { default as AddActivityForm } from './addActivityForm';

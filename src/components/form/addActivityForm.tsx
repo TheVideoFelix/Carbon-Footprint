@@ -1,16 +1,27 @@
+'use client';
 import React from 'react';
 import Button from "@/components/ui/button";
 
-const AddActivityForm = () => {
+interface AddActivityFormProps {
+    onClose: () => void,
+}
+
+const AddActivityForm = ({ onClose }: AddActivityFormProps) => {
 
     const today = new Date().toISOString().split('T')[0];
 
     return (
         <>
-            <div className="fixed inset-0 z-40 bg-gray-900/10 backdrop-blur-sm" />
+            <div className="fixed inset-0 z-40 bg-gray-900/10 backdrop-blur-sm transition-all duration-300" />
 
-            <div className="fixed inset-0 z-50 flex items-center justify-center">
-                <div className="bg-amber-50 p-8 rounded-lg shadow-sm w-1/3 h-[800px] flex flex-col">
+            <div
+                className="fixed inset-0 z-50 flex items-center justify-center"
+                onClick={onClose}
+            >
+                <div
+                    className="bg-amber-50 p-8 rounded-lg shadow-sm w-1/3 h-[800px] flex flex-col transition-all duration-300"
+                    onClick={(e) => e.stopPropagation()}
+                >
                     <div className="w-full flex flex-col flex-1">
                         <h1 className="text-2xl font-bold">Add Activity</h1>
                         <div className="mt-5 px-7">
@@ -68,7 +79,11 @@ const AddActivityForm = () => {
                                 </div>
                             </div>
                             <div className="w-full flex gap-4 mt-8">
-                                <Button variant='box' size="full">
+                                <Button
+                                    variant='box'
+                                    size="full"
+                                    onClick={onClose}
+                                >
                                     Cancel
                                 </Button>
                                 <Button variant='box' size="full" active={true}>
